@@ -1,6 +1,11 @@
 const express = require("express");
-require("dotenv").config();
 const app = express();
+const mongoDB = require("./config/db")
+
+
+require("dotenv").config();
+mongoDB()
+
 const port = process.env.PORT || 4000;
 
 app.listen(port, console.log("server is running at 3000..."));
