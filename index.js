@@ -20,6 +20,8 @@ const user = require("./routes/user");
 // Router Middleware
 app.use("/api/v1", user);
 
+
+
 app.listen(port, console.log("server is running at 3000..."));
 
 // Health api
