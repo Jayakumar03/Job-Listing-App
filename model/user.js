@@ -28,18 +28,6 @@ const userSchema = new mongoose.Schema({
     minlength: [6, "password should be of 6 characters"],
     select: false,
   },
-
-  //   photo: {
-  //     id: {
-  //       type: String,
-  //       required: true,
-  //     },
-
-  //     secure_url: {
-  //       type: String,
-  //       required: true,
-  //     },
-  //   },
 });
 
 // * Encrypt Password before save == Pre Hooks
