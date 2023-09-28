@@ -1,6 +1,5 @@
 const User = require("../model/user.js");
 const fileUpload = require("express-fileupload");
-// const cloudinary = require("cloudinary").v2;
 const cookieToken = require("../utils/cookieToken.js");
 
 exports.signUp = async (req, res, next) => {
@@ -43,7 +42,7 @@ exports.login = async (req, res, next) => {
     if (!email || !password)
       return next(new Error("Require email or password to login in", 400));
 
-    // seaching for user in DB using finfone method
+    // seaching for user in DB using findone method
     const user = await User.findOne({ email }).select("+password");
 
     // If user is not in DB throw an error
@@ -64,3 +63,5 @@ exports.login = async (req, res, next) => {
     console.log(error);
   }
 };
+
+
