@@ -10,6 +10,18 @@ exports.signUp = async (req, res, next) => {
 
     if (isUserAlreadyPresent) {
       throw new Error("User is already registered");
+      res.status(409).json({
+        message: "User is already registered",
+      });
+    }
+
+    const isUserNumberAlreadyPresent = await User.findOne({ number });
+
+    if (isUserNumberAlreadyPresent) {
+      throw new Error("User number is already registered");
+      res.status(409).json({
+        message: "User number is already registered",
+      });
     }
 
     if (!email || !name || !password || !number) {
@@ -63,5 +75,3 @@ exports.login = async (req, res, next) => {
     console.log(error);
   }
 };
-
-

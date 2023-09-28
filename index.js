@@ -17,7 +17,7 @@ app.use(cookieParser());
 app.use(errorHandler);
 
 // Import all routes here
-const user = require("./routes/user");
+const user = require("./routes/auth");
 
 // Router Middleware
 app.use("/api/v1", user);
