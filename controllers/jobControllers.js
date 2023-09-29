@@ -1,3 +1,4 @@
+const job = require("../model/job");
 const Job = require("../model/job");
 
 exports.createJobPost = async (req, res, next) => {
@@ -81,6 +82,41 @@ exports.editJobPost = async (req, res, next) => {
       success: true,
       message: "Successfully updated job post",
       job,
+    });
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+exports.filteredJobs = async (req, res, next) => {
+  try {
+    const filters = req.body;
+    // console.log(filters); // object
+
+    const allTheJobs = await job.find({
+      position: filters.position,
+    }); // array of object
+
+    const filteredjobs = allTheJobs.filter((obj, index) => {
+      let skillArrayFormObj = obj.skillsRequired;
+      let skillArrayFormreq = filters.skills;
+
+      for (const skills of skillArrayFormObj) {
+        if (skillArrayFormreq.includes(skills)) return obj;
+      }
+    });
+
+    if (!filteredjobs) {
+      res.status(409).json({
+        success: false,
+        message:
+          "COuld not find any job post for specified position and skill set",
+      });
+    }
+
+    res.status(200).json({
+      success: True,
+      filteredjobs,
     });
   } catch (error) {
     console.log(error);
