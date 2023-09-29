@@ -91,11 +91,10 @@ exports.editJobPost = async (req, res, next) => {
 exports.filteredJobs = async (req, res, next) => {
   try {
     const filters = req.body;
-    // console.log(filters); // object
 
     const allTheJobs = await job.find({
       position: filters.position,
-    }); // array of object
+    });
 
     const filteredjobs = allTheJobs.filter((obj, index) => {
       let skillArrayFormObj = obj.skillsRequired;
@@ -117,6 +116,19 @@ exports.filteredJobs = async (req, res, next) => {
     res.status(200).json({
       success: True,
       filteredjobs,
+    });
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+exports.jobDescription = async (req, res, next) => {
+  try {
+    const job = await Job.findById(req.params.id);
+
+    res.status(200).json({
+      success: true,
+      JobDescription: job.jobDescription,
     });
   } catch (error) {
     console.log(error);
