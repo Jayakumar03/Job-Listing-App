@@ -1,5 +1,5 @@
 const job = require("../model/job");
-const Job = require("../model/job");
+
 
 exports.createJobPost = async (req, res, next) => {
   try {
@@ -58,6 +58,7 @@ exports.createJobPost = async (req, res, next) => {
     });
   } catch (error) {
     console.log(error);
+    res.status(500).json({ error: 'An error occurred' }) 
   }
 };
 
@@ -85,6 +86,7 @@ exports.editJobPost = async (req, res, next) => {
     });
   } catch (error) {
     console.log(error);
+    res.status(500).json({ error: 'An error occurred' }) 
   }
 };
 
@@ -119,6 +121,7 @@ exports.filteredJobs = async (req, res, next) => {
     });
   } catch (error) {
     console.log(error);
+    res.status(500).json({ error: 'An error occurred' }) 
   }
 };
 
@@ -132,5 +135,6 @@ exports.jobDescription = async (req, res, next) => {
     });
   } catch (error) {
     console.log(error);
+    res.status(500).json({ error: 'An error occurred' }) 
   }
 };
