@@ -1,13 +1,18 @@
 import { useState, useEffect } from "react";
 import axois from "axios";
+import { useNavigate } from "react-router";
 import "./signin.css";
 
 export const SignIn = () => {
+  const navigate = useNavigate();
   const [values, setValues] = useState({
     email: "",
     password: "",
   });
 
+  const handleSignup = () => {
+    navigate("/signup");
+  };
   const emailHandler = (e) => {
     setValues((prevvalue) => {
       return { ...prevvalue, email: e.target.value };
@@ -31,7 +36,9 @@ export const SignIn = () => {
       })
       .then((response) => {
         // handle response
-        console.log("user added successfully");
+        console.log("user added successfully", response.data);
+        if (response.success) {
+        }
       })
       .catch((error) => {
         // handle error
@@ -77,7 +84,7 @@ export const SignIn = () => {
 
               <section className="signup-section">
                 <p>Don’t have an account?</p>
-                <a href="##">Sign Up</a>
+                <p onClick={handleSignup}>Sign Up</p>
               </section>
             </section>
           </div>

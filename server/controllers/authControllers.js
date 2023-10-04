@@ -6,6 +6,8 @@ exports.signUp = async (req, res, next) => {
   try {
     const { name, email, password, number } = req.body;
 
+    console.log(name, email, password, number);
+
     const isUserAlreadyPresent = await User.findOne({ email });
 
     if (isUserAlreadyPresent) {
@@ -25,7 +27,7 @@ exports.signUp = async (req, res, next) => {
     }
 
     if (!email || !name || !password || !number) {
-      return next(new Error("name,email,password are required"));
+      return next(new Error("name,email,password and number are required"));
     }
 
     // Wait for the User.create promise to resolve and get the user object
@@ -47,8 +49,6 @@ exports.signIn = async (req, res, next) => {
     // De-struturing user for request body
     const { email, password } = req.body;
 
-    console.log(email, password);
-    
     // IF user is not throw an erro message
 
     if (!email || !password)

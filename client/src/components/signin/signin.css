@@ -19,6 +19,7 @@
   height: 50%;
 }
 
+
 .name-section > h1 {
   font-size: xx-large;
 }
@@ -64,13 +65,13 @@
     gap: 0.5rem;
 }
 
-.signup-section > a {
+/* .signup-section > a {
     color:#000000;
     font-size: large;
     position: relative;
     top: 14px;
     font-weight: 500;
-}
+} */
 
 
 
