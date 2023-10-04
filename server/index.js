@@ -3,14 +3,16 @@ const app = express();
 const mongoDB = require("./config/db");
 const cookieParser = require("cookie-parser");
 const { errorHandler } = require("./utils/errorHandler");
+const cors = require("cors");
+
+// This will allow all CORS requests
+app.use(cors());
+
 // const fileUpload = require("express-fileupload");
 
 // Import all routes here
 const user = require("./routes/auth");
-const job = require("./routes/job")
-
-
-
+const job = require("./routes/job");
 
 require("dotenv").config();
 mongoDB();
@@ -25,13 +27,11 @@ app.use(cookieParser());
 // ? Error
 // app.use(errorHandler);
 
-
-
 // Router Middleware
 app.use("/api/v1", user);
-app.use("/api/v1", job)
+app.use("/api/v1", job);
 
-app.listen(port, console.log("server is running at " +  port , "..."));
+app.listen(port, console.log("server is running at " + port, "..."));
 
 // Health api
 app.get("/health", (req, res) => {

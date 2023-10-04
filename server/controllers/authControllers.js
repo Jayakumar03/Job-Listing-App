@@ -42,13 +42,13 @@ exports.signUp = async (req, res, next) => {
   }
 };
 
-
-
-exports.login = async (req, res, next) => {
+exports.signIn = async (req, res, next) => {
   try {
     // De-struturing user for request body
     const { email, password } = req.body;
 
+    console.log(email, password);
+    
     // IF user is not throw an erro message
 
     if (!email || !password)
