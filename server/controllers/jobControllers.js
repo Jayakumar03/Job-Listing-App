@@ -1,10 +1,16 @@
 const job = require("../model/job");
 
-
 exports.createJobPost = async (req, res, next) => {
   try {
     var cookie = req.headers.cookie;
-    console.log(cookie);
+
+    if (!cookie) {
+      res.status(400).json({
+        success: false,
+        message: "PLease login to access this page",
+      });
+    }
+    
     const {
       companyName,
       companyLogoURL,
@@ -58,7 +64,7 @@ exports.createJobPost = async (req, res, next) => {
     });
   } catch (error) {
     console.log(error);
-    res.status(500).json({ error: 'An error occurred' }) 
+    res.status(500).json({ error: "An error occurred" });
   }
 };
 
@@ -86,7 +92,7 @@ exports.editJobPost = async (req, res, next) => {
     });
   } catch (error) {
     console.log(error);
-    res.status(500).json({ error: 'An error occurred' }) 
+    res.status(500).json({ error: "An error occurred" });
   }
 };
 
@@ -121,7 +127,7 @@ exports.filteredJobs = async (req, res, next) => {
     });
   } catch (error) {
     console.log(error);
-    res.status(500).json({ error: 'An error occurred' }) 
+    res.status(500).json({ error: "An error occurred" });
   }
 };
 
@@ -135,6 +141,6 @@ exports.jobDescription = async (req, res, next) => {
     });
   } catch (error) {
     console.log(error);
-    res.status(500).json({ error: 'An error occurred' }) 
+    res.status(500).json({ error: "An error occurred" });
   }
 };

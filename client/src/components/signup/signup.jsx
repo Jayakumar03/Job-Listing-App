@@ -57,18 +57,26 @@ export const SignUp = () => {
         // handle response
         console.log("user added successfully", response.data);
         if (response.data.success) {
-          navigate("/jobpage");
+          navigate("/mainpage");
+
         }
+        //! Store name and token in localstorage
+        
+
       })
       .catch((error) => {
         // handle error
         console.log("err", error);
       });
 
-    // setUser({
-    //   email: "",
-    //   password: "",
-    // });
+    setUser({
+      name: "",
+      email: "",
+      number: "",
+      password: "",
+    });
+
+
   };
 
   return (
