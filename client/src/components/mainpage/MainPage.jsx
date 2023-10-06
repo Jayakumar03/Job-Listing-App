@@ -1,4 +1,5 @@
 import "./mainpage.css";
+import { JobDetails } from "./JobDetails";
 
 export const MainPage = () => {
   return (
@@ -32,7 +33,7 @@ export const MainPage = () => {
         </div>
       </main>
 
-      <section></section>
+      <JobDetails />
     </>
   );
 };
