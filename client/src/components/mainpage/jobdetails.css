@@ -1,0 +1,104 @@
+@import url("./mainpage.css");
+
+.job-main-container {
+  position: relative;
+  left: 14%;
+  top: 150px;
+  margin-top: 50px;
+  width: 70%;
+  height: 125px;
+  display: flex;
+  padding: 10px;
+  border: 1px solid #ed5353;
+  box-shadow: 1px 1px 10px #ca7070;
+}
+
+.job-details-container {
+  display: flex;
+
+}
+
+.job-details-container > img {
+  width: 35%;
+  height: 90%;
+}
+
+.job-details-section {
+  position: relative;
+  left: 10%;
+  width: 100%;
+  height: 100%;
+}
+
+.job-details-section > h3 {
+  font-size: 1.3rem;
+  position: relative;
+  top: -10px;
+}
+
+.job-details-section > div {
+  display: flex;
+  gap: 1rem;
+  position: relative;
+  top: -17px;
+  color: gray;
+}
+.icon {
+  padding-right: 5px;
+}
+
+.job-details-section > div:nth-child(odd) {
+  position: relative;
+  top: 7px;
+  color: #ed5353;
+}
+
+/* Right side */
+.job-skill-section {
+  width: 50%;
+  position: relative;
+  left: 25%;
+  /* border: 1px solid #ed5353; */
+}
+
+.job-skill-section > div {
+  float: right;
+}
+.button-container .skills {
+  display: flex;
+  gap: 2rem;
+}
+
+.skills > span {
+  position: relative;
+  top: 10px;
+  text-align: center;
+  height: 1.3rem;
+  color: ;
+  background-color: #e0a5a5 ;
+  border-radius: 5px;
+  font-weight: 700;
+  padding: 5px;
+  margin: 10px;
+}
+
+.button-container {
+  position: relative;
+  top: 60%;
+  left: 50%;
+  display: flex;
+  gap: 1rem;
+}
+
+.button-container > button {
+  width: 150px;
+  height: 2rem;
+  text-align: center;
+  background-color: #ed5353;
+  border: none;
+  color: white;
+  border-radius: 10px;
+  font-size: large;
+}
+
+

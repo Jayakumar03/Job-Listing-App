@@ -1,0 +1,20 @@
+@import url("../signin/signin.css");
+
+.secondary {
+  background: url("/WallpaperDog-20567151 1.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  color: antiquewhite;
+}
+
+.parent-div {
+  display: flex;
+  gap: 2rem;
+}
+.labels-div,
+.inputs-div {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
