@@ -81,11 +81,10 @@ export const AddJobPage = () => {
         <div className="input-container">
           <div>
             <section className="name-section">
-              <h1>Create an account</h1>
-              <p>Your personal job finder is here</p>
+              <h1>Add Job Description</h1>
             </section>
 
-            <section className="input-section input-secondary-section">
+            <section className="input-section ">
               <form onSubmit={submitHandler}>
                 <div class="parent-div">
                   <div class="labels-div">
@@ -111,12 +110,16 @@ export const AddJobPage = () => {
                       id="monthly-salary"
                       name="monthly-salary"
                     />
-                    <input type="text" id="job-type" name="job-type" />
-                    <input
-                      type="text"
-                      id="remote-office"
-                      name="remote-office"
-                    />
+                    <select name="Jobtype" id="job-type">
+                      <option value="Full-time">Full-time</option>
+                      <option value="Contract ">Contract</option>
+                      <option value="Part-time">Part-time</option>
+                    </select>
+                    <select name="remote-office" id="remote-office">
+                      <option value="Hybrid">Hybrid</option>
+                      <option value="Remote ">Remote</option>
+                      <option value="Office">Office</option>
+                    </select>
                     <input type="text" id="location" name="location" />
                     <textarea
                       id="job-description"
@@ -133,8 +136,6 @@ export const AddJobPage = () => {
                     <textarea id="information" name="information"></textarea>
                   </div>
                 </div>
-
-
 
                 <button type="submit" onClick={submitHandler}>
                   Add Job

@@ -17,4 +17,32 @@
   display: flex;
   flex-direction: column;
   gap: 2rem;
+  /* outline: 1px solid red; */
+}
+
+.labels-div {
+  font-size: larger;
+  font-weight: 800;
+}
+
+.input-container > div {
+  position: relative;
+  top: 2%;
+}
+
+.inputs-div > input {
+  width: 130%;
+  height: 20px;
+  outline: 1px solid grey;
+  border-radius: 2px;
+  border: none;
+  margin-top: 10px;
+}
+
+.inputs-div > textarea {
+  width: 130%;
+  height: 50px;
+  outline: 1px solid grey;
+  border-radius: 2px;
+  border: none;
 }
