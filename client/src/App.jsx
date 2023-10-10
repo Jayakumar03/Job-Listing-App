@@ -5,7 +5,7 @@ import { SignIn } from "./components/signin/SignIn";
 import { SignUp } from "./components/signup/signup";
 import { MainPage } from "./components/mainpage/MainPage";
 import { AddJobPage } from "./components/addjob/AddJobPage";
-import { JobDescriptionPage } from "./components/jobdescription/JobDescriptionPage";
+import { JobInfoPage } from "./components/jobinfo/JobInfo";
 
 function App() {
   return (
@@ -13,8 +13,11 @@ function App() {
       <Route path="/" element={<MainPage />}></Route>
       <Route path="/signin" element={<SignIn />}></Route>
       <Route path="/signup" element={<SignUp />}></Route>
+      <Route path="/job/:id" element={<JobInfoPage />}></Route>
     </Routes>
   );
 }
-
+// Todo
+//* Logout api in backend and frontend
+//* Search bar api route
 export default App;

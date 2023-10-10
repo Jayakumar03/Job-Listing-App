@@ -1,4 +1,4 @@
-const job = require("../model/job");
+const Job = require("../model/job");
 
 exports.createJobPost = async (req, res, next) => {
   try {
@@ -10,7 +10,7 @@ exports.createJobPost = async (req, res, next) => {
         message: "PLease login to access this page",
       });
     }
-    
+
     const {
       companyName,
       companyLogoURL,
@@ -131,13 +131,27 @@ exports.filteredJobs = async (req, res, next) => {
   }
 };
 
-exports.jobDescription = async (req, res, next) => {
+exports.jobInformation = async (req, res, next) => {
   try {
     const job = await Job.findById(req.params.id);
 
     res.status(200).json({
       success: true,
-      JobDescription: job.jobDescription,
+      JobDetails: job,
+    });
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ error: "An error occurred" });
+  }
+};
+
+exports.allTheJobs = async (req, res, next) => {
+  try {
+    const jobs = await Job.find();
+
+    res.status(200).json({
+      success: true,
+      jobs: jobs,
     });
   } catch (error) {
     console.log(error);
