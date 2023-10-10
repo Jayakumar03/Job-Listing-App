@@ -13,7 +13,7 @@ export const SignUp = () => {
   });
 
   const handleSignup = () => {
-    navigate("/");
+    navigate("/signin");
   };
 
   const nameHandler = (e) => {
@@ -57,12 +57,11 @@ export const SignUp = () => {
         // handle response
         console.log("user added successfully", response.data);
         if (response.data.success) {
-          navigate("/mainpage");
-
+          Cookies.set("token", response.data.token);
+          localStorage.setItem("token", response.data.token);
+          navigate("/");
         }
         //! Store name and token in localstorage
-        
-
       })
       .catch((error) => {
         // handle error
@@ -75,8 +74,6 @@ export const SignUp = () => {
       number: "",
       password: "",
     });
-
-
   };
 
   return (

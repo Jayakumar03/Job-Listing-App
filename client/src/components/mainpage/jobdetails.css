@@ -15,7 +15,6 @@
 
 .job-details-container {
   display: flex;
-
 }
 
 .job-details-container > img {
@@ -63,7 +62,7 @@
   top: 10px;
   text-align: center;
   height: 1.3rem;
-  background-color: #e2cccc ;
+  background-color: #e2cccc;
   border-radius: 5px;
   font-weight: 700;
   padding: 5px;
@@ -89,33 +88,27 @@
   color: white;
   border-radius: 10px;
   font-size: large;
-  border: 2px solid  #ed5353 ;
+  border: 2px solid #ed5353;
 }
-
 
 /* Media querries */
 
 @media only screen and (max-width: 1200px) {
-
   .job-skill-section {
     width: 30%;
     display: flex;
     flex-direction: column;
     align-items: end;
   }
-  
 }
 
 @media only screen and (min-width: 1300px) {
-
   .job-skill-section {
-    width: 40%;
+    width: 35%;
     position: relative;
     left: 30%;
     display: flex;
     flex-direction: column;
     align-items: end;
   }
-  
 }
-

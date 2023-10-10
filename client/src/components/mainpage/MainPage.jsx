@@ -1,39 +1,50 @@
 import "./mainpage.css";
+import { NavBar } from "./NavBar";
 import { JobDetails } from "./JobDetails";
+import { SearchField } from "./searchField";
+
+import { useNavigate } from "react-router";
+import { useState, useEffect } from "react";
+import axois from "axios";
+import Cookies from "js-cookie";
 
 export const MainPage = () => {
+  const navigate = useNavigate();
+
+  const [jobs, setJobs] = useState([]);
+
+  const [isUserLogedIn, setIsUserLogedIn] = useState(false);
+
+  const jobFetcher = () => {
+    useEffect(() => {
+      axois
+        .get("http://localhost:3000/api/v1/allthejobs")
+        .then((response) => {
+          if (response.data.success) {
+            setJobs(response.data.jobs);
+          }
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+
+      const tokenInLocalStorage = localStorage.getItem("token");
+      console.log(tokenInLocalStorage);
+
+      if (Cookies.get("token") || tokenInLocalStorage) {
+        setIsUserLogedIn(true);
+        console.log(isUserLogedIn);
+      }
+    }, []);
+  };
+
+  jobFetcher();
+
   return (
     <>
-      <nav className="navbar-container">
-        <div className="heading-container">
-          <h1>Jobfinder</h1>
-        </div>
-
-        <div className="auth-container">
-          <button>Login</button>
-          <button>Register</button>
-        </div>
-      </nav>
-
-      <main className="search-main-container">
-        <form className="search-secondary-container">
-          <input type="search" placeholder="Type an job name" />
-          <select name="skills" id="skills">
-            <option value="skills">Skills</option>
-            <option value="Frontend ">Frontend</option>
-            <option value="Css">Css</option>
-            <option value="Javascript">Javascript</option>
-            <option value="Html">Html</option>
-          </select>
-        </form>
-
-        <div>
-          <button>Add Job</button>
-          <button id="no-bg-button">Clear</button>
-        </div>
-      </main>
-
-      <JobDetails />
+      <NavBar isUserLogedIn={isUserLogedIn} />
+      <SearchField isUserLogedIn={isUserLogedIn} />
+      <JobDetails jobs={jobs} isUserLogedIn={isUserLogedIn} />
     </>
   );
 };

@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import axois from "axios";
+import Cookies from "js-cookie";
 import { useNavigate } from "react-router";
 import "./signin.css";
 
@@ -37,7 +38,10 @@ export const SignIn = () => {
       .then((response) => {
         // handle response
         console.log("user added successfully", response.data);
-        if (response.success) {
+        if (response.data.success) {
+          Cookies.set("token", response.data.token);
+          localStorage.setItem('token', response.data.token);
+          navigate("/");
         }
       })
       .catch((error) => {
