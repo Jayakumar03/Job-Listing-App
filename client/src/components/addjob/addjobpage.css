@@ -25,9 +25,9 @@
   font-weight: 800;
 }
 
-.input-container > div {
+.input-container{
   position: relative;
-  top: 2%;
+  left: 7%;
 }
 
 .inputs-div > input {

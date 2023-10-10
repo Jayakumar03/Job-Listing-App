@@ -1,30 +1,54 @@
-import "./jobdec.css";
+import { useState, useEffect } from "react";
+import { useParams } from "react-router";
+import axois from "axios";
 
-export const JobDescriptionPage = () => {
+import "./jobinfo.css";
+import { NavBar } from "../mainpage/NavBar";
+
+export const JobInfoPage = () => {
+  const [jobInformation, setJobInformation] = useState({});
+
+  const { id } = useParams();
+
+  useEffect(() => {
+    axois
+      .get(`http://localhost:3000/api/v1/jobinformation/${id}`)
+      .then((response) => {
+        if (response.data.success) {
+          const data = response.data.JobDetails;
+          setJobInformation(data);
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, []);
+
   return (
     <div>
+      <NavBar />
       <div className="main-container">
         <h1>
-          WordPress Development work from home job/internship at Adyaka Infosec
-          Private Limited
+          {jobInformation?.position} {jobInformation?.jobtype} |{" "}
+          {jobInformation?.workplace} {jobInformation?.location}
         </h1>
       </div>
 
       <div className="second-container">
         <span>1w ago</span>
-        <span>Google</span>
-        <span>FullTme</span>
-        <h1 className="main-heading">WordPress Development </h1>{" "}
-        <span className="location-span">Bangalore| India</span>
+        <span>{jobInformation?.companyName}</span>
+        <span>{jobInformation?.jobtype}</span>
+        <h1 className="main-heading"> {jobInformation?.position}</h1>
+        <span className="location-span">{jobInformation?.location}</span>
         <button className="edit-btn">Edit job</button>
         <div className="addtional-details">
           <div>
             <span>Stipend</span>
-            <span>25,000/month</span>
+            <span>{jobInformation?.salary}</span>
           </div>
           <div>
             <span>Duration</span>
-            <span>6Months</span>
+            <span>{jobInformation?.workplace}</span>
           </div>
         </div>
         <h3>About Company</h3>
@@ -37,15 +61,7 @@ export const JobDescriptionPage = () => {
           improve productivity, and enhance overall efficiency.
         </p>
         <h3>About the job/internship</h3>
-        <p>
-          We are looking for a responsible PHP/WordPress/Laravel/Shopify
-          Developer. He/She will be liable for managing services and therefore
-          the interchange of knowledge between the server and the users. The
-          candidate's primary focus is going to be the event of all server-side
-          logic, definition, and maintenance of the central database and
-          ensuring high performance and responsiveness to requests from the
-          front end.
-        </p>
+        <p>{jobInformation?.jobDescription}</p>
         <p>Selected intern's day-to-day responsibilities include: </p>
         <p>
           {" "}

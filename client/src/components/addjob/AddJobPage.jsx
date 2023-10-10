@@ -79,7 +79,6 @@ export const AddJobPage = () => {
     <>
       <div className="container">
         <div className="input-container">
-          <div>
             <section className="name-section">
               <h1>Add Job Description</h1>
             </section>
@@ -142,7 +141,6 @@ export const AddJobPage = () => {
                 </button>
               </form>
             </section>
-          </div>
         </div>
 
         <div className="image-container secondary">
