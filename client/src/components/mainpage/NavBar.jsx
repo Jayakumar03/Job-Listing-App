@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router";
 import { useEffect } from "react";
 import axois from "axios";
+import Cookies from "js-cookie";
 
 export const NavBar = ({ isUserLogedIn, setIsUserLogedIn }) => {
   const navigate = useNavigate();
@@ -12,24 +13,10 @@ export const NavBar = ({ isUserLogedIn, setIsUserLogedIn }) => {
     navigate("/signup");
   };
 
-  useEffect(() => {
-    if (!isUserLogedIn) {
-      axois
-        .get("http://localhost:3000/api/v1/allthejobs")
-        .then((response) => {
-          if (response.data.success) {
-            localStorage.removeItem("token");
-            Cookies.remove("token");
-          }
-        })
-        .catch((error) => {
-          console.log(error);
-        });
-    }
-  }, [isUserLogedIn]);
-
   const handleLogout = () => {
     setIsUserLogedIn(false);
+    localStorage.removeItem("token");
+    Cookies.remove("token");
   };
 
   return (

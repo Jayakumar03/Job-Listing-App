@@ -5,7 +5,7 @@ exports.createJobPost = async (req, res, next) => {
     var cookie = req.headers.cookie;
 
     if (!cookie) {
-      res.status(400).json({
+      return res.status(400).json({
         success: false,
         message: "PLease login to access this page",
       });
@@ -38,7 +38,7 @@ exports.createJobPost = async (req, res, next) => {
       !skillsRequired ||
       !information
     ) {
-      res.status(400).json({
+      return res.status(400).json({
         success: false,
         message: "Need all the details about job",
       });
@@ -99,7 +99,6 @@ exports.editJobPost = async (req, res, next) => {
 exports.filteredJobs = async (req, res, next) => {
   try {
     const filters = req.body;
-    console.log(filters);
 
     const allTheJobs = await Job.find({
       position: filters.position,

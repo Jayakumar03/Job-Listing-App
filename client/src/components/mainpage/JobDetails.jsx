@@ -17,7 +17,10 @@ export const JobDetails = ({ jobs, isUserLogedIn }) => {
     return (
       <div className="job-main-container" key={job._id}>
         <div className="job-details-container">
-          <img src="https://99designs-blog.imgix.net/blog/wp-content/uploads/2022/05/1200px-Tesla_logo-e1659037140772.png?auto=format&q=60&fit=max&w=930"></img>
+          <div className="logo-container">
+          <img src={job.companyLogoURL} className="company-logo"></img>
+          </div>
+         
           <div className="job-details-section">
             <h3>{job.position}</h3>
             <div className="">
