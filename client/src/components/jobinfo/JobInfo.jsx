@@ -42,16 +42,16 @@ export const JobInfoPage = () => {
         <span className="location-span">{jobInformation?.location}</span>
         <button className="edit-btn">Edit job</button>
         <div className="addtional-details">
-          <div>
+          <div className="stipend">
             <span>Stipend</span>
             <span>{jobInformation?.salary}</span>
           </div>
-          <div>
+          <div  className="stipend">
             <span>Duration</span>
             <span>{jobInformation?.workplace}</span>
           </div>
         </div>
-        <h3>About Company</h3>
+        <h3 >About Company</h3>
         <p>
           We provide technology-based services to help businesses and
           organizations achieve their goals. We offer a wide range of services,
