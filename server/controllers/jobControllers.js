@@ -99,8 +99,9 @@ exports.editJobPost = async (req, res, next) => {
 exports.filteredJobs = async (req, res, next) => {
   try {
     const filters = req.body;
+    console.log(filters);
 
-    const allTheJobs = await job.find({
+    const allTheJobs = await Job.find({
       position: filters.position,
     });
 
@@ -122,7 +123,7 @@ exports.filteredJobs = async (req, res, next) => {
     }
 
     res.status(200).json({
-      success: True,
+      success: true,
       filteredjobs,
     });
   } catch (error) {

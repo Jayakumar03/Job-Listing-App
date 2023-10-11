@@ -14,10 +14,10 @@ function App() {
       <Route path="/signin" element={<SignIn />}></Route>
       <Route path="/signup" element={<SignUp />}></Route>
       <Route path="/job/:id" element={<JobInfoPage />}></Route>
+      <Route path="/addjob" element={<AddJobPage />}></Route>
     </Routes>
   );
 }
 // Todo
-//* Logout api in backend and frontend
-//* Search bar api route
+//* Addjob page
 export default App;

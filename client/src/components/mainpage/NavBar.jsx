@@ -1,6 +1,8 @@
 import { useNavigate } from "react-router";
+import { useEffect } from "react";
+import axois from "axios";
 
-export const NavBar = ({ isUserLogedIn }) => {
+export const NavBar = ({ isUserLogedIn, setIsUserLogedIn }) => {
   const navigate = useNavigate();
   const handleLogin = () => {
     navigate("/signin");
@@ -8,6 +10,26 @@ export const NavBar = ({ isUserLogedIn }) => {
 
   const handleRegister = () => {
     navigate("/signup");
+  };
+
+  useEffect(() => {
+    if (!isUserLogedIn) {
+      axois
+        .get("http://localhost:3000/api/v1/allthejobs")
+        .then((response) => {
+          if (response.data.success) {
+            localStorage.removeItem("token");
+            Cookies.remove("token");
+          }
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    }
+  }, [isUserLogedIn]);
+
+  const handleLogout = () => {
+    setIsUserLogedIn(false);
   };
 
   return (
@@ -20,7 +42,7 @@ export const NavBar = ({ isUserLogedIn }) => {
         <div className="auth-container">
           {isUserLogedIn ? (
             <>
-              <button>Logout</button>
+              <button onClick={handleLogout}>Logout</button>
               <button>Hello Recuriter !!</button>
             </>
           ) : (

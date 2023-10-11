@@ -29,11 +29,9 @@ export const MainPage = () => {
         });
 
       const tokenInLocalStorage = localStorage.getItem("token");
-      console.log(tokenInLocalStorage);
 
       if (Cookies.get("token") || tokenInLocalStorage) {
         setIsUserLogedIn(true);
-        console.log(isUserLogedIn);
       }
     }, []);
   };
@@ -42,8 +40,15 @@ export const MainPage = () => {
 
   return (
     <>
-      <NavBar isUserLogedIn={isUserLogedIn} />
-      <SearchField isUserLogedIn={isUserLogedIn} />
+      <NavBar
+        isUserLogedIn={isUserLogedIn}
+        setIsUserLogedIn={setIsUserLogedIn}
+      />
+      <SearchField
+        jobs={jobs}
+        setJobs={setJobs}
+        isUserLogedIn={isUserLogedIn}
+      />
       <JobDetails jobs={jobs} isUserLogedIn={isUserLogedIn} />
     </>
   );

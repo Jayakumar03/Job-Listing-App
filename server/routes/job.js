@@ -13,7 +13,7 @@ const {
 
 router.route("/createjobpost").post(isLoggedIn, createJobPost);
 router.route("/editjobpost/:id").put(isLoggedIn, editJobPost);
-router.route("/filteredjobs").get(filteredJobs);
+router.route("/filteredjobs").post(filteredJobs);
 router.route("/jobinformation/:id").get(jobInformation);
 router.route("/allthejobs").get(allTheJobs);
 

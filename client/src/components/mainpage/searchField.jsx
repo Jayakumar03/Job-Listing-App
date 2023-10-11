@@ -1,13 +1,13 @@
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router";
 import axois from "axios";
 
-export const SearchField = ({isUserLogedIn}) => {
+export const SearchField = ({ isUserLogedIn, jobs, setJobs }) => {
+  const navigate = useNavigate();
   const [customSearch, setCustomSearch] = useState({
     search: "",
     skills: [],
   });
-
-  console.log(isUserLogedIn);
 
   const searchHandler = (e) => {
     setCustomSearch((prev) => {
@@ -29,9 +29,30 @@ export const SearchField = ({isUserLogedIn}) => {
     });
   };
 
+  const SearchHandler = (e) => {
+    e.preventDefault();
+    axois
+      .post("http://localhost:3000/api/v1/filteredjobs", {
+        position: customSearch.search,
+        skills: customSearch.skills,
+      })
+      .then((response) => {
+        if (response.data.success) {
+          setJobs(response.data.filteredjobs);
+          console.aclog(jobs);
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
+  const addJobHandler = () => {
+    navigate("/addjob");
+  };
   return (
     <main className="search-main-container">
-      <form className="search-secondary-container">
+      <form className="search-secondary-container" onSubmit={SearchHandler}>
         <input
           type="search"
           placeholder="Type an job name"
@@ -43,10 +64,10 @@ export const SearchField = ({isUserLogedIn}) => {
           name="skills"
           id="skills"
         >
-          <option value="Frontend ">Frontend</option>
-          <option value="Css">Css</option>
+          <option value="Fullstack">Fullstack</option>
           <option value="Javascript">Javascript</option>
-          <option value="Html">Html</option>
+          <option value="Node.js">Node.js</option>
+          <option value="Express">Express</option>
         </select>
       </form>
 
@@ -55,7 +76,9 @@ export const SearchField = ({isUserLogedIn}) => {
       })}
 
       <div>
-        {isUserLogedIn ? <button>Add Job</button> : null}
+        {isUserLogedIn ? (
+          <button onClick={addJobHandler}>Add Job</button>
+        ) : null}
 
         <button id="no-bg-button" onClick={ClearHandler}>
           Clear
