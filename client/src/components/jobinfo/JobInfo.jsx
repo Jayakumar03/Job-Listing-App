@@ -1,14 +1,17 @@
 import { useState, useEffect } from "react";
-import { useParams } from "react-router";
+import { useNavigate, useParams } from "react-router";
 import axois from "axios";
+import Cookies from "js-cookie";
 
 import "./jobinfo.css";
 import { NavBar } from "../mainpage/NavBar";
 
-export const JobInfoPage = () => {
+export const JobInfoPage = ({ isUserLogedIn, setIsUserLogedIn }) => {
   const [jobInformation, setJobInformation] = useState({});
 
   const { id } = useParams();
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     axois
@@ -24,9 +27,16 @@ export const JobInfoPage = () => {
       });
   }, []);
 
+  const editHandler = () => {
+    navigate(`/editjob/${id}`);
+  };
+
   return (
     <div>
-      <NavBar />
+      <NavBar
+        isUserLogedIn={isUserLogedIn}
+        setIsUserLogedIn={setIsUserLogedIn}
+      />
       <div className="main-container">
         <h1>
           {jobInformation?.position} {jobInformation?.jobtype} |{" "}
@@ -40,18 +50,23 @@ export const JobInfoPage = () => {
         <span>{jobInformation?.jobtype}</span>
         <h1 className="main-heading"> {jobInformation?.position}</h1>
         <span className="location-span">{jobInformation?.location}</span>
-        <button className="edit-btn">Edit job</button>
+        {isUserLogedIn ? (
+          <button className="edit-btn" onClick={editHandler}>
+            Edit job
+          </button>
+        ) : null}
+
         <div className="addtional-details">
           <div className="stipend">
             <span>Stipend</span>
             <span>{jobInformation?.salary}</span>
           </div>
-          <div  className="stipend">
+          <div className="stipend">
             <span>Duration</span>
             <span>{jobInformation?.workplace}</span>
           </div>
         </div>
-        <h3 >About Company</h3>
+        <h3>About Company</h3>
         <p>
           We provide technology-based services to help businesses and
           organizations achieve their goals. We offer a wide range of services,

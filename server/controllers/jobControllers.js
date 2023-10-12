@@ -114,7 +114,7 @@ exports.filteredJobs = async (req, res, next) => {
     });
 
     if (!filteredjobs) {
-      res.status(409).json({
+       return res.status(409).json({
         success: false,
         message:
           "COuld not find any job post for specified position and skill set",

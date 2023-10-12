@@ -8,12 +8,12 @@ import { useState, useEffect } from "react";
 import axois from "axios";
 import Cookies from "js-cookie";
 
-export const MainPage = () => {
+export const MainPage = ({isUserLogedIn, setIsUserLogedIn}) => {
   const navigate = useNavigate();
 
-  const [jobs, setJobs] = useState([]);
+  
 
-  const [isUserLogedIn, setIsUserLogedIn] = useState(false);
+  const [jobs, setJobs] = useState([]);
 
   const jobFetcher = () => {
     useEffect(() => {

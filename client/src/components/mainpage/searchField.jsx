@@ -2,7 +2,8 @@ import { useState, useEffect } from "react";
 import { useNavigate } from "react-router";
 import axois from "axios";
 
-export const SearchField = ({ isUserLogedIn, jobs, setJobs }) => {
+
+export const SearchField = ({ isUserLogedIn, jobs }) => {
   const navigate = useNavigate();
   const [customSearch, setCustomSearch] = useState({
     search: "",

@@ -5,6 +5,7 @@ import Cookies from "js-cookie";
 
 export const NavBar = ({ isUserLogedIn, setIsUserLogedIn }) => {
   const navigate = useNavigate();
+
   const handleLogin = () => {
     navigate("/signin");
   };

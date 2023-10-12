@@ -5,8 +5,9 @@ import { useNavigate } from "react-router";
 import "./jobdetails.css";
 import { JobInfoPage } from "../jobinfo/JobInfo";
 
-export const JobDetails = ({ jobs, isUserLogedIn }) => {
+export const JobDetails = ({ isUserLogedIn, jobs }) => {
   const navigate = useNavigate();
+
 
   const viewDetailsHandler = (e) => {
     const id = e.target.getAttribute("id");
@@ -18,9 +19,9 @@ export const JobDetails = ({ jobs, isUserLogedIn }) => {
       <div className="job-main-container" key={job._id}>
         <div className="job-details-container">
           <div className="logo-container">
-          <img src={job.companyLogoURL} className="company-logo"></img>
+            <img src={job.companyLogoURL} className="company-logo"></img>
           </div>
-         
+
           <div className="job-details-section">
             <h3>{job.position}</h3>
             <div className="">

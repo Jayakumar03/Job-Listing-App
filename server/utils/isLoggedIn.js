@@ -6,6 +6,7 @@ exports.isLoggedIn = async (req, res, next) => {
   let token = req.cookies.token;
 
   console.log(token);
+  
   // if token not found in cookies, check if header contains Auth field
   if (!token && req.header("Authorization")) {
     token = req.header("Authorization").replace("Bearer ", "");
