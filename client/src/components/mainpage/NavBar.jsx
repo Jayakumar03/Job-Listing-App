@@ -20,11 +20,18 @@ export const NavBar = ({ isUserLogedIn, setIsUserLogedIn }) => {
     Cookies.remove("token");
   };
 
+  const mainHandler = () => {
+    navigate("/");
+  };
   return (
     <>
       <nav className="navbar-container">
         <div className="heading-container">
-          <h1>Jobfinder</h1>
+          <button className="main-button">
+            <h1  onClick={mainHandler}>
+              Jobfinder
+            </h1>
+          </button>
         </div>
 
         <div className="auth-container">

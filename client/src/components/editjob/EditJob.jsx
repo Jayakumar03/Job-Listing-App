@@ -39,7 +39,6 @@ export const EditJob = () => {
     information: "",
   });
 
-
   const companyNameHandler = (e) => {
     setEditJob((prevvalue) => {
       return { ...prevvalue, companyName: e.target.value };
@@ -106,7 +105,7 @@ export const EditJob = () => {
     });
   };
 
-  const submitHandler = (e) => {
+  const updateJobHandler = (e) => {
     e.preventDefault();
 
     axois
@@ -257,7 +256,7 @@ export const EditJob = () => {
                 </div>
               </div>
 
-              <button type="submit" onClick={submitHandler}>
+              <button type="submit" onClick={updateJobHandler}>
                 Update Job
               </button>
             </form>

@@ -8,10 +8,14 @@ import { JobInfoPage } from "../jobinfo/JobInfo";
 export const JobDetails = ({ isUserLogedIn, jobs }) => {
   const navigate = useNavigate();
 
-
   const viewDetailsHandler = (e) => {
     const id = e.target.getAttribute("id");
     navigate(`/job/${id}`);
+  };
+
+  const editJobHandler = (e) => {
+    const id = e.target.getAttribute("id");
+    navigate(`/editjob/${id}`);
   };
 
   return jobs.map((job) => {
@@ -51,7 +55,15 @@ export const JobDetails = ({ isUserLogedIn, jobs }) => {
             })}
           </div>
           <div className="button-container">
-            {isUserLogedIn ? <button id="no-bg-button">Edit Job</button> : null}
+            {isUserLogedIn ? (
+              <button
+                className="no-bg-button"
+                id={job._id}
+                onClick={editJobHandler}
+              >
+                Edit Job
+              </button>
+            ) : null}
             <button onClick={viewDetailsHandler} id={job._id}>
               view details
             </button>
