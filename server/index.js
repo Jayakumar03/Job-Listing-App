@@ -40,7 +40,7 @@ app.use(cookieParser());
 
 // Router Middleware
 app.use("/api/v1", user);
-app.use("/api/v1/job", job);
+app.use("/api/v1", job);
 
 app.listen(port, console.log("server is running at " + port, "..."));
 

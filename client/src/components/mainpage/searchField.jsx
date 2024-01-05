@@ -33,7 +33,7 @@ export const SearchField = ({ isUserLogedIn, jobs }) => {
   const SearchHandler = (e) => {
     e.preventDefault();
     axois
-      .post("https://job-listing-backend-xi.vercel.app/api/v1/filteredjobs", {
+      .post("https://job-listing-app-sever.vercel.app/api/v1/filteredjobs", {
         position: customSearch.search,
         skills: customSearch.skills,
       })
