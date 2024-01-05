@@ -8,6 +8,19 @@ const cors = require("cors");
 // This will allow all CORS requests
 app.use(cors());
 
+app.options("*", cors());
+
+// Access-Control-Allow-Origin
+// origin: ["https://swip-troy-frontend.vercel.app"],
+
+app.use(
+  cors({
+    origin: "*",
+    methods: ["post", "get", "put", "delete"],
+    "Access-Control-Allow-Credentials": true,
+  })
+);
+
 // const fileUpload = require("express-fileupload");
 
 // Import all routes here
