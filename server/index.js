@@ -24,8 +24,6 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 
-// ? Error
-// app.use(errorHandler);
 
 // Router Middleware
 app.use("/api/v1", user);

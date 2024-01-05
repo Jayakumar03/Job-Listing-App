@@ -98,7 +98,7 @@ export const AddJobPage = () => {
     e.preventDefault();
 
     axois
-      .post("http://localhost:3000/api/v1/createjobpost", {
+      .post("https://job-listing-backend-xi.vercel.app/api/v1/createjobpost", {
         companyName: newJob.companyName,
         logoUrl: newJob.logoUrl,
         jobPosition: newJob.jobPosition,
