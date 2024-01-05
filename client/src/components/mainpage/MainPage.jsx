@@ -16,7 +16,7 @@ export const MainPage = ({ isUserLogedIn, setIsUserLogedIn }) => {
   const jobFetcher = () => {
     useEffect(() => {
       axois
-        .get("https://job-listing-backend-xi.vercel.app/api/v1/allthejobs")
+        .get("https://job-listing-app-backend-three.vercel.app/api/v1/allthejobs")
         .then((response) => {
           if (response.data.success) {
             setJobs(response.data.jobs);
