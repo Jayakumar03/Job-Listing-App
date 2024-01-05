@@ -114,7 +114,7 @@ exports.filteredJobs = async (req, res, next) => {
     });
 
     if (!filteredjobs) {
-       return res.status(409).json({
+      return res.status(409).json({
         success: false,
         message:
           "COuld not find any job post for specified position and skill set",
@@ -148,6 +148,8 @@ exports.jobInformation = async (req, res, next) => {
 exports.allTheJobs = async (req, res, next) => {
   try {
     const jobs = await Job.find();
+
+    console.log(jobs);
 
     res.status(200).json({
       success: true,
