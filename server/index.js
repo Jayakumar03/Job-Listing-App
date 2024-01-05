@@ -36,3 +36,7 @@ app.get("/health", (req, res) => {
   res.status(200);
   console.log("Health is good");
 });
+
+app.get("/", (req, res) => {
+  res.send("<h1>Hello !!!</h1>")
+})
