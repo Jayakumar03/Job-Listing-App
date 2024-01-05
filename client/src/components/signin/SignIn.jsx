@@ -31,7 +31,7 @@ export const SignIn = () => {
   const submitHandler = (e) => {
     e.preventDefault();
     axois
-      .post("http://localhost:3000/api/v1/signin", {
+      .post("https://job-listing-backend-xi.vercel.app/api/v1/signin", {
         email: values.email,
         password: values.password,
       })

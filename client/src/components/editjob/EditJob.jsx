@@ -12,7 +12,7 @@ export const EditJob = () => {
 
   useEffect(() => {
     axois
-      .get(`http://localhost:3000/api/v1/jobinformation/${id}`)
+      .get(`https://job-listing-backend-xi.vercel.app/api/v1/jobinformation/${id}`)
       .then((response) => {
         if (response.data.success) {
           const data = response.data.JobDetails;

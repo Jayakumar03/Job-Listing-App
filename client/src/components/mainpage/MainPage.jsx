@@ -8,17 +8,15 @@ import { useState, useEffect } from "react";
 import axois from "axios";
 import Cookies from "js-cookie";
 
-export const MainPage = ({isUserLogedIn, setIsUserLogedIn}) => {
+export const MainPage = ({ isUserLogedIn, setIsUserLogedIn }) => {
   const navigate = useNavigate();
-
-  
 
   const [jobs, setJobs] = useState([]);
 
   const jobFetcher = () => {
     useEffect(() => {
       axois
-        .get("http://localhost:3000/api/v1/allthejobs")
+        .get("https://job-listing-backend-xi.vercel.app/api/v1/allthejobs")
         .then((response) => {
           if (response.data.success) {
             setJobs(response.data.jobs);
