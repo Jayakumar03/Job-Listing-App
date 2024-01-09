@@ -12,7 +12,7 @@ export const EditJob = () => {
 
   useEffect(() => {
     axois
-      .get(`https://job-listing-app-sever.vercel.app/api/v1/jobinformation/${id}`)
+      .get(`https://vast-jade-tick-tutu.cyclic.app/api/v1/jobinformation/${id}`)
       .then((response) => {
         if (response.data.success) {
           const data = response.data.JobDetails;

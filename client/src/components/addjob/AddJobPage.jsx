@@ -5,9 +5,8 @@ import Cookies from "js-cookie";
 import "./addjobpage.css";
 
 export const AddJobPage = () => {
-  const token = Cookies.get("token")
+  const token = Cookies.get("token");
   axois.defaults.headers.common["Authorization"] = `Bearer ${token}`;
-
 
   const navigate = useNavigate();
   const [newJob, setNewJob] = useState({
@@ -98,7 +97,7 @@ export const AddJobPage = () => {
     e.preventDefault();
 
     axois
-      .post("https://job-listing-app-sever.vercel.app/api/v1/createjobpost", {
+      .post("https://vast-jade-tick-tutu.cyclic.app/api/v1/createjobpost", {
         companyName: newJob.companyName,
         logoUrl: newJob.logoUrl,
         jobPosition: newJob.jobPosition,

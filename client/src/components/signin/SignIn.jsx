@@ -31,7 +31,7 @@ export const SignIn = () => {
   const submitHandler = (e) => {
     e.preventDefault();
     axois
-      .post("https://job-listing-app-sever.vercel.app/api/v1/signin", {
+      .post("https://vast-jade-tick-tutu.cyclic.app/api/v1/signin", {
         email: values.email,
         password: values.password,
       })
@@ -40,7 +40,7 @@ export const SignIn = () => {
         console.log("user added successfully", response.data);
         if (response.data.success) {
           Cookies.set("token", response.data.token);
-          localStorage.setItem('token', response.data.token);
+          localStorage.setItem("token", response.data.token);
           navigate("/");
         }
       })
