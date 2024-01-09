@@ -8,6 +8,12 @@ const cors = require("cors");
 // This will allow all CORS requests
 app.use(cors());
 
+app.use((req, res, next) => {
+  res.header('Access-Control-Allow-Origin', '*'); // replace * with your origin if needed
+  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+  next();
+ });
+
 
 // Import all routes here
 const user = require("./routes/auth");
