@@ -9,8 +9,6 @@ const cors = require("cors");
 app.use(cors());
 
 
-// const fileUpload = require("express-fileupload");
-
 // Import all routes here
 const user = require("./routes/auth");
 const job = require("./routes/job");
